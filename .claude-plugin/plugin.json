@@ -1,0 +1,14 @@
+{
+  "name": "project-kickstart",
+  "displayName": "Project Kickstart",
+  "description": "Start projects with good structure and token-saving best practices: curated CLAUDE.md, docs/ folder, cheap Haiku subagents, context hygiene, fresh-docs habit, and feature-boundary discipline.",
+  "author": {
+    "name": "Nicolas Mendez Gonzalez (Niko)",
+    "email": "nicolas.mendez.gonzalez@gmail.com",
+    "url": "https://github.com/nicolasmg-pr"
+  },
+  "repository": "https://github.com/nicolasmg-pr/claudecode-project-kickstarter",
+  "homepage": "https://github.com/nicolasmg-pr/claudecode-project-kickstarter",
+  "license": "MIT",
+  "keywords": ["scaffolding", "token-saving", "context-hygiene", "git-workflow", "project-setup"]
+}

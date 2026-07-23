@@ -1,0 +1,64 @@
+# project-kickstart
+
+Claude Code plugin that starts every project with clean structure and token-saving practices.
+
+## Contents
+
+Skills:
+
+- **project-kickoff** — scaffold git, `docs/`, a curated English CLAUDE.md, token-saving setup
+- **feature-start** — `/clear` + new branch discipline at every feature boundary
+- **fresh-docs** — search → paste → cite current docs before framework work
+- **context-hygiene** — token audit: scoped CLAUDE.md, guided `/compact`, delegation, RTK/Caveman
+
+Agents (all Haiku, cheap delegation out of the box):
+
+- **test-runner** — runs tests, reports failures only
+- **lint-fixer** — fixes mechanical lint violations, never logic
+- **commit-writer** — conventional commit message from the staged diff
+
+## Install
+
+From inside Claude Code:
+
+```
+/plugin marketplace add nicolasmg-pr/claudecode-project-kickstarter
+/plugin install project-kickstart@niko-plugins
+```
+
+Working from a local clone instead: `/plugin marketplace add /path/to/claudecode-project-kickstarter`.
+
+Updates: `version` is intentionally unset in `plugin.json`, so every commit to `main` is a new version — update with `/plugin update project-kickstart`.
+
+## Use
+
+Start a new project: say "start a new project" or run `/project-kickstart:project-kickoff my-app`.
+The other skills auto-trigger from their descriptions, or invoke them the same way.
+
+## Structure
+
+```
+project-kickstart/
+├── .claude-plugin/
+│   ├── plugin.json          # plugin manifest
+│   └── marketplace.json     # marketplace manifest (niko-plugins)
+├── skills/
+│   ├── project-kickoff/     # + references/ (CLAUDE.md & docs/ templates)
+│   ├── feature-start/
+│   ├── fresh-docs/
+│   └── context-hygiene/     # + references/ (RTK + Caveman install)
+└── agents/
+    ├── test-runner.md
+    ├── lint-fixer.md
+    └── commit-writer.md
+```
+
+Validate after changes: `claude plugin validate . --strict`
+
+## Sources
+
+Built from vault notes: Claude Code Token Saving Tips · Context Learnings · Clear good practice · Project Review – Lessons learnt · Solving the training cut off problem · Pulling in fresh docs with web search · Main info about Skills · Plugins.
+
+## License
+
+MIT

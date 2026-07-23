@@ -1,0 +1,15 @@
+{
+  "name": "niko-plugins",
+  "owner": {
+    "name": "Nicolas Mendez Gonzalez (Niko)",
+    "email": "nicolas.mendez.gonzalez@gmail.com",
+    "url": "https://github.com/nicolasmg-pr"
+  },
+  "plugins": [
+    {
+      "name": "project-kickstart",
+      "source": "./",
+      "description": "Project scaffolding with token-saving best practices: project-kickoff, feature-start, fresh-docs and context-hygiene skills, plus Haiku agents for tests, lint and commit messages."
+    }
+  ]
+}
