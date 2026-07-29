@@ -10,6 +10,7 @@ Skills:
 - **feature-start** — `/clear` + new branch discipline at every feature boundary
 - **fresh-docs** — search → paste → cite current docs before framework work
 - **context-hygiene** — token audit: scoped CLAUDE.md, guided `/compact`, delegation, RTK/Caveman
+- **frontend-design** — distinctive, intentional visual design guidance for UI work (from anthropics/skills, Apache-2.0)
 
 Agents (all Haiku, cheap delegation out of the box):
 
@@ -46,7 +47,8 @@ project-kickstart/
 │   ├── project-kickoff/     # + references/ (CLAUDE.md & docs/ templates)
 │   ├── feature-start/
 │   ├── fresh-docs/
-│   └── context-hygiene/     # + references/ (RTK + Caveman install)
+│   ├── context-hygiene/     # + references/ (RTK + Caveman install)
+│   └── frontend-design/     # + LICENSE.txt (Apache-2.0)
 └── agents/
     ├── test-runner.md
     ├── lint-fixer.md
