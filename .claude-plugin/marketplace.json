@@ -9,7 +9,7 @@
     {
       "name": "project-kickstart",
       "source": "./",
-      "description": "Project scaffolding with token-saving best practices: project-kickoff, feature-start, fresh-docs and context-hygiene skills, plus Haiku agents for tests, lint and commit messages."
+      "description": "Project scaffolding with token-saving best practices: project-kickoff, feature-start, fresh-docs, context-hygiene and frontend-design skills, plus Haiku agents for tests, lint and commit messages."
     }
   ]
 }

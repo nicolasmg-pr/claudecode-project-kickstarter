@@ -19,11 +19,11 @@ Ask only what you cannot infer: project name, stack/language, package manager, t
 
 ## Step 2 — docs/ folder
 
-Create `docs/` with a README from [references/docs-readme-template.md](references/docs-readme-template.md). This folder holds small, scoped reference files the agent cannot know from training. Precision, not volume. Never secrets.
+Create `docs/` with a README from [references/docs-readme-template.md](docs-readme-template.md). This folder holds small, scoped reference files the agent cannot know from training. Precision, not volume. Never secrets.
 
 ## Step 3 — CLAUDE.md
 
-Write it from [references/claude-md-template.md](references/claude-md-template.md). Rules:
+Write it from [references/claude-md-template.md](claude-md-template.md). Rules:
 
 - English only. Lean: target under 60 lines.
 - Only this-project content. If a line would be true in every project, cut it — generic guidelines cause context rot: they eat startup context and degrade output.
