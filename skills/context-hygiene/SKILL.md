@@ -15,7 +15,8 @@ Audit the session and project setup for token waste. Work the checklist, report 
 4. **Delegation.** Tests, lint fixes, commit messages → the bundled Haiku subagents (`test-runner`, `lint-fixer`, `commit-writer`). Subagents start with a clean context on a cheaper model.
 5. **No roleplay hierarchies.** Simulating PM / Scrum Master / senior-junior teams forces useless planning and reporting loops. The user plans; the agent executes.
 6. **Memory.** A flat `memory.md` is injected in full into every prompt — cost grows with knowledge. Prefer semantic memory via MCP (e.g. Mem0): structured storage, retrieve only what is relevant.
-7. **Terminal I/O compression (optional).** RTK compresses tool output by up to 80%; Caveman trims response verbosity; combined ≈ 78% less token usage. Install steps: [references/rtk-caveman.md](rtk-caveman.md).
+7. **Prompt caching.** Any repeated LLM call with a stable prefix (system prompt, tool definitions, RAG documents) should cache it — reads cost ~0.1x on Anthropic. Order the prompt stable-first, volatile last, and verify `cached_tokens` is non-zero → caching-strategy skill.
+8. **Terminal I/O compression (optional).** RTK compresses tool output by up to 80%; Caveman trims response verbosity; combined ≈ 78% less token usage. Install steps: [references/rtk-caveman.md](rtk-caveman.md).
 
 ## Output
 
