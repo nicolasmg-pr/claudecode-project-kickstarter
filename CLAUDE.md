@@ -31,6 +31,8 @@ Run this after any change to `.claude-plugin/*.json`, `skills/*/SKILL.md`, or `a
 - Agents in `agents/` are all pinned to `model: haiku` with a minimal `tools` allowlist — they're cheap delegation targets (tests, lint, commits), not general-purpose. Don't broaden their tool access or move them off Haiku without a reason.
 - Skills must not encourage roleplay hierarchies (PM/Scrum Master/senior-junior simulation) or reliance on auto-compaction — both are explicit anti-patterns this plugin's `context-hygiene` and `feature-start` skills push back on. Keep new skills consistent with that stance.
 - Reference templates (`skills/project-kickoff/references/*.md`) are templates *for other projects'* CLAUDE.md/docs — don't confuse their content rules (e.g. "under 60 lines") with rules for this repo's own files.
+- Vendored skills are kept **verbatim** from upstream, each with its `LICENSE.txt` beside its `SKILL.md`: `frontend-design` (anthropics/skills, Apache-2.0) and the eight motion/design skills from emilkowalski/skills (MIT) — `emil-design-eng`, `apple-design`, `animation-vocabulary`, `find-animation-opportunities`, `improve-animations`, `review-animations`, `pick-ui-library`, `prototype`. Do not edit them to match this repo's house style; re-sync from upstream instead.
+- Skills authored here that cite external docs put the source URL and fetch date at the top of the reference file (see `skills/caching-strategy/references/`).
 
 ## Sources
 

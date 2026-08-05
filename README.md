@@ -6,11 +6,24 @@ Claude Code plugin that starts every project with clean structure and token-savi
 
 Skills:
 
-- **project-kickoff** — scaffold git, `docs/`, a curated English CLAUDE.md, token-saving setup
+- **project-kickoff** — scaffold git, a correct `src/`/`tests/`/`docs/` layout, a curated English CLAUDE.md, token-saving setup
 - **feature-start** — `/clear` + new branch discipline at every feature boundary
 - **fresh-docs** — search → paste → cite current docs before framework work
 - **context-hygiene** — token audit: scoped CLAUDE.md, guided `/compact`, delegation, RTK/Caveman
+- **caching-strategy** — cache and pool repeated, expensive work: LLM prompt caching, DB connection pooling, HTTP/CDN, memoization
+- **retrieval-quality** — RAG precision: retrieve-then-rerank with a cross-encoder, hybrid retrieval, measured before/after
 - **frontend-design** — distinctive, intentional visual design guidance for UI work (from anthropics/skills, Apache-2.0)
+
+Motion and design-engineering skills (vendored from [emilkowalski/skills](https://github.com/emilkowalski/skills), MIT):
+
+- **emil-design-eng** — UI polish, component design, animation and transition decisions
+- **apple-design** — Apple's fluid-motion and interface principles, translated to the web
+- **animation-vocabulary** — name a motion effect from a loose description (crossfade, shared element transition, rubber-banding)
+- **find-animation-opportunities** — sweep a UI for what should animate, and what should not
+- **improve-animations** — audit a codebase's motion, emit prioritized plans for cheaper agents to execute
+- **review-animations** — strict review of motion code against a craft bar (manual invoke only)
+- **pick-ui-library** — curated library picks per task instead of hand-rolled components (manual invoke only)
+- **prototype** — build several variants of a UI piece behind a live picker (manual invoke only)
 
 Agents (all Haiku, cheap delegation out of the box):
 
@@ -44,11 +57,21 @@ project-kickstart/
 │   ├── plugin.json          # plugin manifest
 │   └── marketplace.json     # marketplace manifest (niko-plugins)
 ├── skills/
-│   ├── project-kickoff/     # + references/ (CLAUDE.md & docs/ templates)
+│   ├── project-kickoff/     # + references/ (folder layout, CLAUDE.md & docs/ templates)
 │   ├── feature-start/
 │   ├── fresh-docs/
 │   ├── context-hygiene/     # + references/ (RTK + Caveman install)
-│   └── frontend-design/     # + LICENSE.txt (Apache-2.0)
+│   ├── caching-strategy/    # + references/ (prompt caching, DB pooling)
+│   ├── retrieval-quality/   # + references/ (BGE cross-encoder reranker)
+│   ├── frontend-design/     # + LICENSE.txt (Apache-2.0)
+│   ├── emil-design-eng/     # ┐
+│   ├── apple-design/        # │
+│   ├── animation-vocabulary/# │ vendored from emilkowalski/skills
+│   ├── find-animation-opportunities/  # │ each + LICENSE.txt (MIT)
+│   ├── improve-animations/  # │ + AUDIT.md, PLAN-TEMPLATE.md
+│   ├── review-animations/   # │ + STANDARDS.md
+│   ├── pick-ui-library/     # │
+│   └── prototype/           # ┘ + PICKER.md
 └── agents/
     ├── test-runner.md
     ├── lint-fixer.md
