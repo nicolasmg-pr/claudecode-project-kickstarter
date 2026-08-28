@@ -9,6 +9,7 @@ Review posture: assume every input crossing a boundary is hostile and every outp
 - No key, token, password, or connection string in source, tests, fixtures, logs, error messages, or client bundles.
 - Secrets read from env or a secret manager at use time, not baked at build time into anything shipped to a client.
 - `.env`, credential files, and dumps are gitignored. Committed once → rotate, not just delete.
+- Infra files are source too: docker-compose, CI YAML, Kubernetes manifests, IaC. Reference `${VARS}` from a gitignored `.env`; commit a `.env.example` with placeholders. "Local dev only" is not an exemption — tracked compose files become staging templates.
 - Secrets never enter a cache, a prompt, an analytics event, or a crash report.
 
 ## Authentication and authorisation
@@ -34,6 +35,7 @@ Review posture: assume every input crossing a boundary is hostile and every outp
 - Errors to the client are generic; details go to the server log. No stack traces, no SQL, no file paths in production responses.
 - Logs carry no PII, tokens, or full request bodies.
 - IDOR check: swap the ID to another tenant's object — does it 403 or 200?
+- Framework state stores (agent checkpoints, session tables, job queues) persist full conversations and business data as plaintext JSON. Encrypt them at rest like credentials — TDE/CMEK at minimum, column-level (pgcrypto) for multi-tenant.
 
 ## Transport and dependencies
 
@@ -44,7 +46,7 @@ Review posture: assume every input crossing a boundary is hostile and every outp
 
 ## Abuse and limits
 
-- Auth, upload, and expensive endpoints are rate limited.
+- Auth, upload, and expensive endpoints are rate limited at the HTTP layer, keyed on tenant (authenticated) or IP (pre-auth). A budget or spend ceiling is a cost control, not DoS mitigation — a burst exhausts pools and quotas before it fires. Multi-instance deployments need a shared store (Redis) or edge rules, not in-memory counters.
 - Request body, upload size, page size, and retry counts are bounded. Unbounded pagination is a denial-of-service and a cost bug.
 - Uploads validated by content, not extension; stored outside the web root; never served from the same origin as the app if untrusted.
 - Retries bounded with backoff; no infinite retry against a paid API.

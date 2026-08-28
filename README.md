@@ -12,7 +12,7 @@ Skills:
 - **context-hygiene** — token audit: scoped CLAUDE.md, guided `/compact`, delegation, RTK/Caveman
 - **caching-strategy** — cache and pool repeated, expensive work: LLM prompt caching, DB connection pooling, HTTP/CDN, memoization
 - **retrieval-quality** — RAG precision: retrieve-then-rerank with a cross-encoder, hybrid retrieval, measured before/after
-- **solution-critique** — end-of-phase review across usability, security, and prompt engineering: ranked findings, then the approved fixes
+- **solution-critique** — end-of-phase review across usability, security, operability, and prompt engineering: ranked findings, then the approved fixes
 - **frontend-design** — distinctive, intentional visual design guidance for UI work (from anthropics/skills, Apache-2.0)
 
 Motion and design-engineering skills (vendored from [emilkowalski/skills](https://github.com/emilkowalski/skills), MIT):
@@ -64,7 +64,7 @@ project-kickstart/
 │   ├── context-hygiene/     # + references/ (RTK + Caveman install)
 │   ├── caching-strategy/    # + references/ (prompt caching, DB pooling)
 │   ├── retrieval-quality/   # + references/ (BGE cross-encoder reranker)
-│   ├── solution-critique/   # + references/ (usability, security, prompt-engineering)
+│   ├── solution-critique/   # + references/ (usability, security, operability, prompt-engineering)
 │   ├── frontend-design/     # + LICENSE.txt (Apache-2.0)
 │   ├── emil-design-eng/     # ┐
 │   ├── apple-design/        # │

@@ -14,7 +14,8 @@ Ask only what you cannot infer: project name, stack/language, package manager, t
 
 ## Step 1 — Git
 
-- `git init` if there is no repo. Create a stack-appropriate `.gitignore`.
+- `git init` if there is no repo. Create a stack-appropriate `.gitignore` with `.env` in it from the start.
+- If the stack needs config, commit a `.env.example` with placeholder values (`API_KEY=changeme`), never real ones. Compose/CI files reference `${VARS}` — a git-tracked docker-compose with literal secrets is a finding even for local dev.
 - Hold the initial commit until scaffolding is done: `chore: project kickstart scaffolding`.
 
 ## Step 2 — Folder layout

@@ -33,6 +33,9 @@ Fill in, prune sections that do not apply, keep under ~60 lines total. English o
 - Keep orchestration components small: one concern per hook/controller; extract instead of growing.
 - Persistence is explicit: state is account-scoped (server) or clearly labeled browser-local — never silently localStorage.
 - Caching: <layer + key shape + invalidation rule, one line per cache>. Repeated LLM prompts use prompt caching (stable prefix first); DB access goes through a pool, never a per-request connection.
+- Deployed services expose `GET /health` returning 200 only after startup completes (migrations run, pool connected); the platform probe points at it — port-open is not readiness.
+- Structured JSON logging (pino / structlog) from the first commit, with requestId + tenantId on every entry. No `console.*` / `print` for operational events.
+- Endpoints that trigger paid or model work are rate limited per tenant/IP at the HTTP layer; a budget ceiling is a cost control, not DoS protection.
 - React 19+ / Next 16+: React Compiler on; no manual useCallback/useMemo; module-level or lazy-useState clients, never useMemo for client instances.
 
 ## Working agreements
@@ -45,6 +48,6 @@ Fill in, prune sections that do not apply, keep under ~60 lines total. English o
 
 ## Boundaries
 
-- Never commit secrets. docs/ is reference material, not keys.
+- Never commit secrets — including docker-compose, CI, and IaC files: `${VAR}` references plus a `.env.example` with placeholders. docs/ is reference material, not keys.
 - <anything the agent must not touch>
 ```

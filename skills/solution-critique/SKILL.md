@@ -1,12 +1,12 @@
 ---
 name: solution-critique
-description: Critique a finished implementation across three lenses — usability, security, and prompt engineering — then apply the approved fixes. Use at the end of an implementation phase, before merge or release, or when asked to review, refine, harden, or optimise the final result.
+description: Critique a finished implementation across four lenses — usability, security, operability, and prompt engineering — then apply the approved fixes. Use at the end of an implementation phase, before merge or release, or when asked to review, refine, harden, or optimise the final result.
 argument-hint: "[what shipped — feature, branch, or path]"
 ---
 
 # Solution Critique
 
-End-of-phase review. The code works; the question is whether it is **usable, safe, and — where it calls a model — well prompted.**
+End-of-phase review. The code works; the question is whether it is **usable, safe, operable in production, and — where it calls a model — well prompted.**
 
 Critique only what this phase actually changed. No architecture rewrites, no unrelated refactors, no praise padding.
 
@@ -14,7 +14,7 @@ Critique only what this phase actually changed. No architecture rewrites, no unr
 
 1. Get the diff: `git diff main...HEAD --stat`, or the paths the user named. No branch → review the working tree plus the last commits of this phase.
 2. Read the changed files. Read the entry points they touch (route handler, CLI command, component, prompt builder) even if unchanged — a finding usually lives at the boundary.
-3. Name the surfaces in one line each: user surface (UI / CLI / API / none), trust boundary (who sends input, who reads output), model surface (LLM calls, tools, retrieval, or none).
+3. Name the surfaces in one line each: user surface (UI / CLI / API / none), trust boundary (who sends input, who reads output), deploy surface (long-running service / serverless / job / none), model surface (LLM calls, tools, retrieval, or none).
 4. State which lenses apply. A lens with no surface is skipped explicitly, not silently: "no LLM call in this diff → prompt-engineering lens skipped."
 
 ## Step 2 — Run the three lenses
@@ -25,6 +25,7 @@ Work them in order. Each finding needs a `file:line`, a concrete failure, and a 
 |------|------|-----------|
 | Usability | Can someone use this without reading the source? Wrong input, empty state, slow call, destructive action. | [references/usability.md](usability.md) |
 | Security | What does a hostile input do here? Secrets, authz, injection, exposure. | [references/security.md](security.md) |
+| Operability | Will this deploy, restart, and be debuggable in production? Readiness, startup order, shutdown, structured logs. | [references/operability.md](operability.md) |
 | Prompt engineering | Is every model call cheap, deterministic enough, and hard to hijack? | [references/prompt-engineering.md](prompt-engineering.md) |
 
 Rules while reviewing:
@@ -49,8 +50,8 @@ Cap the report at 10 findings. More than 10 → report the 10 that matter and sa
 ```
 ## Solution critique — <scope>
 
-Surfaces: <user> | <trust boundary> | <model>
-Lenses: usability, security, prompt-engineering (skipped: <lens> — <reason>)
+Surfaces: <user> | <trust boundary> | <deploy> | <model>
+Lenses: usability, security, operability, prompt-engineering (skipped: <lens> — <reason>)
 
 ### Blockers
 - `path/to/file.ts:42` — <failure>. Input: <what triggers it>. Fix: <change>.
