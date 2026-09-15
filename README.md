@@ -13,6 +13,7 @@ Skills:
 - **caching-strategy** — cache and pool repeated, expensive work: LLM prompt caching, DB connection pooling, HTTP/CDN, memoization
 - **retrieval-quality** — RAG precision: retrieve-then-rerank with a cross-encoder, hybrid retrieval, measured before/after
 - **solution-critique** — end-of-phase review across usability, security, operability, and prompt engineering: ranked findings, then the approved fixes
+- **stack-audit** — read-only audit of a Python repo against nine fixed stack constraints (Streamlit, async FastAPI, layered backend, uv, python-dotenv, pydantic, file-backed SQLite, frontend/backend separation, Makefile): MET / NOT MET with quoted evidence
 - **frontend-design** — distinctive, intentional visual design guidance for UI work (from anthropics/skills, Apache-2.0)
 
 Motion and design-engineering skills (vendored from [emilkowalski/skills](https://github.com/emilkowalski/skills), MIT):
